@@ -1,0 +1,36 @@
+{
+    "name": "steelants/laravel-cms",
+    "description": "Simple content management system for laravel",
+    "type": "library",
+    "require": {
+        "laravel/framework": "11.0",
+        "livewire/livewire": "^3.0",
+        "steelants/form": "^1.3.1",
+        "steelants/datatable": "^2.0.2",
+        "steelants/modal": "^2.0.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "10.4",
+        "barryvdh/laravel-debugbar": "3.9"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SteelAnts\\LaravelCMS\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SteelAnts\\LaravelCMS\\CMSServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Imendin",
+            "email": "SilentisLP@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
