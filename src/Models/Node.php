@@ -31,9 +31,7 @@ class Node extends Model
 
     protected function casts(): array
     {
-        return [
-            'data' => 'array',
-        ];
+        return ['data' => 'array'];
     }
 
     public function comments(): MorphMany

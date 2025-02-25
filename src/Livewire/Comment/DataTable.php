@@ -1,4 +1,5 @@
 <?php
+
 namespace SteelAnts\LaravelCMS\Livewire\Comment;
 
 use SteelAnts\LaravelCMS\Models\Comment;
@@ -16,21 +17,21 @@ class DataTable extends DataTableComponent
     public bool $paginated = false;
 
     public $listeners = [
-        'commentAdded' => '$refresh',
+        'commentAdded'  => '$refresh',
         'commentEdited' => '$refresh',
-        'closeModal' => '$refresh',
+        'closeModal'    => '$refresh',
     ];
 
     public function query(): Builder
     {
-        return Comment::query()->with(['commentable', 'user'])->whereMorphRelation('commentable', $this->commentable->getMorphClass(), 'id',$this->commentable->id);
+        return Comment::query()->with(['commentable', 'user'])->whereMorphRelation('commentable', $this->commentable->getMorphClass(), 'id', $this->commentable->id);
     }
 
     public function headers(): array
     {
         return [
-			'user.name' => __('Uživatel'),
-			'content' => __('Obsah'),
+            'user.name' => __('Uživatel'),
+            'content'   => __('Obsah'),
         ];
     }
 
@@ -48,31 +49,32 @@ class DataTable extends DataTableComponent
     {
         return [
             [
-                'type' => "livewire",
-                'action' => "reply",
-                'text' => __("Reagovat"),
+                'type'       => "livewire",
+                'action'     => "reply",
+                'text'       => __("Reagovat"),
                 'parameters' => $item['id'],
-                'iconClass' => 'fas fa-reply',
+                'iconClass'  => 'fas fa-reply',
             ],
             [
-                'type' => "livewire",
-                'action' => "edit",
-                'text' => __("Edit"),
+                'type'       => "livewire",
+                'action'     => "edit",
+                'text'       => __("Edit"),
                 'parameters' => $item['id'],
-                'iconClass' => 'fas fa-pen',
+                'iconClass'  => 'fas fa-pen',
             ],
             [
-                'type' => "livewire",
-                'action' => "remove",
-                'parameters' => $item['id'],
-                'text' => __("Remove"),
+                'type'        => "livewire",
+                'action'      => "remove",
+                'parameters'  => $item['id'],
+                'text'        => __("Remove"),
                 'actionClass' => 'text-danger',
-                'iconClass' => 'fas fa-trash',
-            ]
+                'iconClass'   => 'fas fa-trash',
+            ],
         ];
     }
 
-    public function remove($comment_id){
+    public function remove($comment_id)
+    {
         Comment::find($comment_id)->delete();
     }
 

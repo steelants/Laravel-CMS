@@ -18,7 +18,7 @@ class PostController extends Controller
     {
         $post = Node::where('type', NodeType::POST);
         if (is_numeric($post_id)) {
-            $post =  $post->find($post_id);
+            $post = $post->find($post_id);
         } else {
             $post = $post->where('slug', $post_id)->first();
         }

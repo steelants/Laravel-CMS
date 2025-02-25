@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use SteelAnts\LaravelCMS\Models\Node;
 use SteelAnts\LaravelCMS\Types\PartType;
-use SteelAnts\LaravelCMS\Types\StatusType;
 
 return new class extends Migration
 {

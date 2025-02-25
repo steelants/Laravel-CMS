@@ -1,4 +1,5 @@
 <?php
+
 namespace SteelAnts\LaravelCMS\Livewire\Node;
 
 use Livewire\Component;
@@ -12,11 +13,11 @@ class Form extends Component
     public $model;
     public int $order = 0;
     public int $user_id;
-	public string $slug = '';
-	public string $title = '';
-	public array $data = [];
-	public string $type = 'page';
-	public int $status = 0;
+    public string $slug = '';
+    public string $title = '';
+    public array $data = [];
+    public string $type = 'page';
+    public int $status = 0;
     public array $parts = [];
 
     public array $typesKeys = [];
@@ -28,19 +29,20 @@ class Form extends Component
     protected function rules()
     {
         return [
-            'order' => 'nullable|integer',
-			'slug' => 'required|unique:nodes,slug' . (!empty($this->model) ? ',' . $this->model . ',id': ''),
-			'title' => 'nullable|string',
-            'data' => 'nullable|array',
-			'data.*' => 'required|array',
-            'data.*.key' => 'required|string',
+            'order'        => 'nullable|integer',
+            'slug'         => 'required|unique:nodes,slug' . (!empty($this->model) ? ',' . $this->model . ',id' : ''),
+            'title'        => 'nullable|string',
+            'data'         => 'nullable|array',
+            'data.*'       => 'required|array',
+            'data.*.key'   => 'required|string',
             'data.*.value' => 'required|string',
-			'type' => 'required|in_array:typesKeys.*',
-			'status' => 'nullable|integer|in_array:statusesKeys.*',
+            'type'         => 'required|in_array:typesKeys.*',
+            'status'       => 'nullable|integer|in_array:statusesKeys.*',
         ];
     }
 
-    public function mount ($model = null, $type = 'page'){
+    public function mount($model = null, $type = 'page')
+    {
         $this->typesKeys = array_keys(NodeType::getAll());
         $this->statuses = StatusType::getAll();
         $this->statusesKeys = array_keys($this->statuses);
@@ -53,11 +55,11 @@ class Form extends Component
 
             $this->order = $node->order;
             $this->user_id = $node->user_id;
-			$this->slug = $node->slug;
-			$this->title = $node->title;
-			$this->data = $node->data;
-			$this->type = $node->type;
-			$this->status = $node->status;
+            $this->slug = $node->slug;
+            $this->title = $node->title;
+            $this->data = $node->data;
+            $this->type = $node->type;
+            $this->status = $node->status;
             $this->parts = $node->parts->pluck('content', 'id')->toArray();
 
             $this->action = 'update';
@@ -94,7 +96,10 @@ class Form extends Component
 
     public function addData()
     {
-        $this->data[] = ['key' => '', 'value' => ''];
+        $this->data[] = [
+            'key'   => '',
+            'value' => '',
+        ];
     }
 
     public function removeData($id)

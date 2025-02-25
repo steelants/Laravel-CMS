@@ -12,10 +12,10 @@ class NodeType
     public static function getAll()
     {
         return $names = [
-            self::PAGE => __('Stránka'),
-            self::POST => __('Příspěvek'),
+            self::PAGE    => __('Stránka'),
+            self::POST    => __('Příspěvek'),
             self::GALLERY => __('Galerie'),
-            self::CUSTOM => __('Vlastní'),
+            self::CUSTOM  => __('Vlastní'),
         ];
     }
 

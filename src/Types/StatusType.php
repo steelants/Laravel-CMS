@@ -12,9 +12,9 @@ class StatusType
     public static function getAll()
     {
         return $names = [
-            self::CONCEPT => __('Koncept'),
+            self::CONCEPT   => __('Koncept'),
             self::PUBLISHED => __('Publikovaný'),
-            self::PRIVATE => __('Soukromý'),
+            self::PRIVATE   => __('Soukromý'),
         ];
     }
 

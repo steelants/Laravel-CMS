@@ -1,4 +1,5 @@
 <?php
+
 namespace SteelAnts\LaravelCMS\Livewire\Comment;
 
 use Livewire\Component;
@@ -11,7 +12,7 @@ class Form extends Component
     public $commentable_id;
 
     public int $parent_id = 0;
-	public string $content = '';
+    public string $content = '';
 
     public $action = 'store';
 
@@ -19,11 +20,12 @@ class Form extends Component
     {
         return [
             'parent_id' => 'nullable|integer',
-			'content' => 'required',
+            'content'   => 'required',
         ];
     }
 
-    public function mount ($model = null, $parent_id = 0){
+    public function mount($model = null, $parent_id = 0)
+    {
         $this->parent_id = $parent_id;
         if (!empty($model)) {
             $comment = Comment::find($model);
@@ -31,7 +33,7 @@ class Form extends Component
             $this->model = $model;
 
             $this->parent_id = $comment->parent_id;
-			$this->content = $comment->content;
+            $this->content = $comment->content;
 
             $this->action = 'update';
         }

@@ -11,7 +11,7 @@ class MenuItemType
     {
         return $names = [
             self::ROUTE => __('Routa'),
-            self::URL => __('Url'),
+            self::URL   => __('Url'),
         ];
     }
 

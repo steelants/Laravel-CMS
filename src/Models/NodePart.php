@@ -20,9 +20,7 @@ class NodePart extends Model
 
     protected function casts(): array
     {
-        return [
-            'data' => 'array',
-        ];
+        return ['data' => 'array'];
     }
 
     public function node(): BelongsTo

@@ -22,9 +22,7 @@ class Comment extends Model
         'content',
     ];
 
-    protected $hidden = [
-        'ip_address',
-    ];
+    protected $hidden = ['ip_address'];
 
     public function commentable(): MorphTo
     {
@@ -38,11 +36,11 @@ class Comment extends Model
 
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(Comment::class, 'id','parent_id');
+        return $this->belongsTo(Comment::class, 'id', 'parent_id');
     }
 
     public function childs(): HasMany
     {
-        return $this->hasMany(Comment::class, 'parent_id','id');
+        return $this->hasMany(Comment::class, 'parent_id', 'id');
     }
 }

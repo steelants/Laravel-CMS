@@ -1,4 +1,5 @@
 <?php
+
 namespace SteelAnts\LaravelCMS\Livewire\Node;
 
 use SteelAnts\LaravelCMS\Models\Node;
@@ -17,11 +18,12 @@ class DataTable extends DataTableComponent
     public string $sortBy = "order";
 
     public $listeners = [
-        'nodeAdded' => '$refresh',
+        'nodeAdded'  => '$refresh',
         'nodeEdited' => '$refresh',
         'closeModal' => '$refresh',
     ];
-    public function mount($type){
+    public function mount($type)
+    {
         $this->type = $type;
     }
 
@@ -33,12 +35,12 @@ class DataTable extends DataTableComponent
     public function headers(): array
     {
         return [
-            'order' => __('Pořadí'),
-			'user.name' => __('Autor'),
-			'slug' => __('Slug'),
-			'title' => __('Nadpis'),
-			'type' => __('Typ'),
-			'status' => __('Stav'),
+            'order'     => __('Pořadí'),
+            'user.name' => __('Autor'),
+            'slug'      => __('Slug'),
+            'title'     => __('Nadpis'),
+            'type'      => __('Typ'),
+            'status'    => __('Stav'),
         ];
     }
 
@@ -56,24 +58,25 @@ class DataTable extends DataTableComponent
     {
         return [
             [
-                'type' => "livewire",
-                'action' => "edit",
-                'text' => __('Upravit'),
+                'type'       => "livewire",
+                'action'     => "edit",
+                'text'       => __('Upravit'),
                 'parameters' => $item['id'],
-                'iconClass' => 'fas fa-pen',
+                'iconClass'  => 'fas fa-pen',
             ],
             [
-                'type' => "livewire",
-                'action' => "remove",
-                'parameters' => $item['id'],
-                'text' => __('Odstranit'),
+                'type'        => "livewire",
+                'action'      => "remove",
+                'parameters'  => $item['id'],
+                'text'        => __('Odstranit'),
                 'actionClass' => 'text-danger',
-                'iconClass' => 'fas fa-trash',
-            ]
+                'iconClass'   => 'fas fa-trash',
+            ],
         ];
     }
 
-    public function remove($node_id){
+    public function remove($node_id)
+    {
         Node::find($node_id)->delete();
     }
 

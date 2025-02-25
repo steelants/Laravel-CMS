@@ -4,7 +4,6 @@ use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use SteelAnts\LaravelCMS\Models\Comment;
 
 return new class extends Migration
 {

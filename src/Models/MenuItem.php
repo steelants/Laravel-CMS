@@ -20,18 +20,18 @@ class MenuItem extends Model
         'type',
     ];
 
-    public function menu(): BelongsTo 
+    public function menu(): BelongsTo
     {
         return $this->belongsTo(Menu::class);
     }
 
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(MenuItem::class, 'id','parent_id');
+        return $this->belongsTo(MenuItem::class, 'id', 'parent_id');
     }
 
     public function childs(): HasMany
     {
-        return $this->hasMany(MenuItem::class, 'parent_id','id');
+        return $this->hasMany(MenuItem::class, 'parent_id', 'id');
     }
 }
