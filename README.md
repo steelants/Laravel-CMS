@@ -21,22 +21,36 @@ Route::cmsPublic(); //Public routes as Pages and so on
 Route::cmsAdmin(); //Admin crud Routes
 ```
 
-### Development
+## Development
 
-1) Clone Repo to `[LARVEL-ROOT]/packages/`
-2) Modify ;composer.json`
-```json
-    "autoload": {
-        "psr-4": {
-            ...
-            "SteelAnts\\LaravelCMS\\": "packages/laravel-cms/src/"
-            ...
-        }
-    },
+1. Create subfolder `/packages` at root of your laravel project
+
+2. clone repository to sub folder `/packages` (you need to be positioned at root of your laravel project in your terminal)
+```bash
+git clone https://github.com/steelants/Laravel-CMS.git ./packages/Laravel-CMS
 ```
-3) Add (code below) to: `[LARVEL-ROOT]/bootstrap/providers.php`
+
+3. edit composer.json file
+```json
+"autoload": {
+	"psr-4": {
+		"SteelAnts\\LaravelCMS\\": "packages/laravel-cms/src/"
+	}
+}
+```
+
+4. Add provider to `bootstrap/providers.php`
 ```php
-SteelAnts\LaravelCMS\CMSServiceProvider::class,
+return [
+	...
+	SteelAnts\LaravelCMS\CMSServiceProvider::class,
+	...
+];
+```
+
+5. use commands to aplicate changes
+```bash
+composer dump-autoload
 ```
 
 ## Contributors
