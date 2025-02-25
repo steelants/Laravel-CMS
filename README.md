@@ -15,6 +15,12 @@ php artisan vendor:publish --tag=cms-migrations
 php artisan migrate
 ```
 
+###### Add to route file:
+```php
+Route::cmsPublic(); //Public routes as Pages and so on
+Route::cmsAdmin(); //Admin crud Routes
+```
+
 ### Development
 
 1) Clone Repo to `[LARVEL-ROOT]/packages/`
